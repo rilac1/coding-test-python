@@ -1,3 +1,4 @@
+# 뱀
 n = int(input())
 k = int(input())
 data = [[0] * n for _ in range(n)]
