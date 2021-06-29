@@ -2,7 +2,7 @@
 # 에라토스테네스의 체
 m = int(input())
 n = int(input())
-a = range(10001)
+a = list(range(10001))
 if m==1:
     m+=1
 
