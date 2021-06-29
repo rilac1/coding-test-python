@@ -15,7 +15,7 @@ for i in range(1, route+1):
             divisor.append(i)
 
 divisor.sort()
-if len(divisor) > k:
-    print(divisor[k-1])
-else:
+if len(divisor) < k:
     print('0')
+else:
+    print(divisor[k-1])
