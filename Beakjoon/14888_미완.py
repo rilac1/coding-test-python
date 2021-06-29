@@ -1,3 +1,6 @@
+# 연산자 끼워넣기
+# 트루트포스
+# 시간초과... ㅠㅠ
 import itertools
 
 n = int(input())
@@ -33,8 +36,10 @@ for perm in itertools.permutations(operation):
     x = temp
     for i in range(n-1):
         x = calculate(x, perm[i], a[i])
-    maxV = max(maxV, x)
-    minV = min(minV, x)
+    if x>maxV:
+        maxV = x
+    if x<minV:
+        minV = x
 
 print(maxV)
 print(minV)
