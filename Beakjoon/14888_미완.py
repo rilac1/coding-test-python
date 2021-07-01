@@ -1,6 +1,5 @@
 # 연산자 끼워넣기
 # 트루트포스
-# 시간초과... ㅠㅠ
 import itertools
 
 n = int(input())
@@ -10,17 +9,22 @@ o = list(map(int, input().split()))
 maxV = 0
 minV = 1e9
 
-def back(x, y, index):
-    if index == n-1:
+def cal(x, i):
+    if i==n-1:
         maxV = max(maxV, x)
-        minV = min(minV, x) 
+        minV = min(minV, x)
 
-    num = n[index]
-    x += num
-    back(x, index+1)
-
-back(a[0], 1)
-
-
+    if o[0]>0:
+        o[0] -= 1
+        return cal(x, x + a[i], i+1)
+    if o[1]>0:
+        o[1] -= 1
+        return cal(x, x - a[i], i+1)
+    if o[2]>0:
+        o[2] -= 1
+        return cal(x, x * a[i], i+1)
+    if o[3]>0:
+        o[3] -= 1
+    
 print(maxV)
 print(minV)
