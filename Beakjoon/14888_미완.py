@@ -1,36 +1,38 @@
 # 연산자 끼워넣기
 # 트루트포스
-import itertools
+import sys
+input = sys.stdin.readline
 
 n = int(input())
 a = list(map(int, input().split()))
 o = list(map(int, input().split()))
 
-maxV = 0
-minV = 1e9
-
 def cal(x, i):
-    if i == n-1:
+    global maxV, minV
+    if i == n:
         maxV = max(maxV, x)
         minV = min(minV, x)
-        return x
-    if o[0]>0:
-        o[0] -= 1
-        x = cal(x + a[i], i+1) - a[i]
-        o[0] += 1
-    if o[1]>0:
-        o[1] -= 1
-        x = cal(x - a[i], i+1) + a[i]
-        o[1] = 1
-    if o[2]>0:
-        o[2] -= 1
-        x = cal(x * a[i], i+1) // a[i]
-        o[2] += 1
-    if o[3]>0:
-        o[3] -= 1
-        x = cal (x // a[i], i+1) * a[i]
-        o[3] += 1
+        return
 
+    if o[0]:
+        o[0] -= 1
+        cal(x + a[i], i+1)
+        o[0] += 1
+    if o[1]:
+        o[1] -= 1
+        cal(x - a[i], i+1)
+        o[1] += 1
+    if o[2]:
+        o[2] -= 1
+        cal(x * a[i], i+1)
+        o[2] += 1
+    if o[3]:
+        o[3] -= 1
+        cal(int(x / a[i]), i+1)
+        o[3] += 1
+maxV = 0
+minV = 1e8
 cal(a[0], 1)
+
 print(maxV)
 print(minV)
