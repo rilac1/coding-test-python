@@ -30,8 +30,8 @@ def cal(x, i):
         o[3] -= 1
         cal(int(x / a[i]), i+1)
         o[3] += 1
-maxV = 0
-minV = 1e8
+maxV = -sys.maxsize - 1
+minV = sys.maxsize
 cal(a[0], 1)
 
 print(maxV)
