@@ -16,8 +16,8 @@ while queue:
                 min_path[i] = min_path[x]+1
                 path_num[i] = path_num[x]
                 queue.append(i)
-            elif min_path[N] == min_path[x]+1:
-                path_num[N] += path_num[x]
+            elif min_path[i] == min_path[x]+1:
+                path_num[i] += path_num[x]
 
 print(min_path[K])
 print(path_num[K])
