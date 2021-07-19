@@ -1,44 +1,21 @@
+# 숨바꼭질 3
+# dijstra
 import heapq
-import sys
+MAX = 100000
 N, K = map(int, input().split())
-q = []
-heapq.heappush(q,(0, N))
-distance = [sys.maxsize] * 100001
-distance[N] = 0
 
-while q:
-    dist, x = heapq.heappop(q)
-    if dist > distance[x]:
+heap = []
+table = [1e9] * (MAX+1)
+heapq.heappush(heap, (0, N))
+
+while heap:
+    dis, loc = heapq.heappop(heap)
+    if not 0<= loc <=MAX:
         continue
-    else:
-        distance[x] = dist
-    if 0<=x<=K:
-        heapq.heappush(q, (dist, x*2))
-    for i in (x+1, x-1):
-        if 0<=i<=100000:
-            heapq.heappush(q, (dist+1, i))
+    if dis<table[loc]:
+        table[loc] = dis
+        heapq.heappush(heap, (dis, loc*2))
+        heapq.heappush(heap, (dis+1, loc+1))
+        heapq.heappush(heap, (dis+1, loc-1))
 
-print(distance[K])
-
-"""
-from collections import deque
-N, K = map(int, input().split())
-min_path = [-1] * 100001
-min_path[N] = 0
-
-queue = deque([N])
-while queue:
-    x = queue.popleft()
-    temp = x*2
-    if 0<=temp<=100000:
-        if min_path[temp] == -1:
-            min_path[temp] = min_path[x]
-            queue.append(temp)
-
-    for i in range(x+1, x-1):
-        if min_path[i] == -1:
-            min_path[i] = min_path[x] + 1
-            queue.append(i)
-
-print(min_path[K])
-"""
+print(table[K])
