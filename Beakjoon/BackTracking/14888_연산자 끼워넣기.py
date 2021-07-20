@@ -1,4 +1,3 @@
-# 연산자 끼워넣기
 # 트루트포스
 import sys
 input = sys.stdin.readline
