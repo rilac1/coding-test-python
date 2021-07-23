@@ -11,6 +11,7 @@ for _ in range(M):
 for i in graph:
     i.sort()
 
+#####   DFS   ######
 visited = [False]*(N+1)
 def dfs(a):
     if visited[a]:
@@ -22,6 +23,7 @@ def dfs(a):
 dfs(V)
 print()
 
+#####   BFS   ######
 visited = [False]*(N+1)
 queue = deque([V])
 while queue:
