@@ -12,7 +12,7 @@ complex = []
 
 def dfs(a,b):
     global temp
-    if graph[a][b]==0:
+    if not 0<=a<N or not 0<=b<N or graph[a][b]==0:
         return
     temp += 1
     graph[a][b] = 0
