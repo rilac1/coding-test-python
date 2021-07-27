@@ -3,10 +3,10 @@ S = int(input())
 
 cnt = 0
 start = 0
-while start<=S:
+while start<S:
     cnt += 1
     start += cnt
-if start==S:
-    cnt += 1
+if start > S:
+    cnt -= 1
 
-print(cnt, start)
+print(cnt)
