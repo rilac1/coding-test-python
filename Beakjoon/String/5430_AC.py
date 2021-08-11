@@ -5,28 +5,33 @@ import sys
 input = sys.stdin.readline
 
 T = int(input())
-ret = []
-
 for i in range(T):
     p = input().rstrip()
     n = int(input())
     arr = input().rstrip()[1:-1].split(',')
-    print(arr)
+    if arr[0] == '':
+        arr = []
     
+    left = 0
+    right = n-1
+    reverse = False
     isError = False
     for func in p:
         if func == 'R':
-            arr.reverse()
+            reverse = not reverse
+
         elif func == 'D':
-            if not arr:
+            if right<left:
                 isError = True
                 break
-            arr.pop(0)
-    
+            elif reverse:
+                right-=1
+            else:
+                left+=1
     if isError:
-        ret.append('error')
+        print('error')
     else:
-        ret.append(list(map(int, arr)))
-
-for i in ret:
-    print(i)
+        temp = arr[left:right+1]
+        if reverse:
+            temp.reverse()
+        print('[' + ','.join(temp) + ']')
