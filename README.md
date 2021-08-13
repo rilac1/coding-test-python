@@ -17,3 +17,9 @@ copy.deepcopy()
 board = list(map(lambda x: ord(x)-65, input().rstrip()))
 ```
 > ABCDE -> [0, 1, 2, 3, 4]
+
+## 2차원 배열 한 줄로 입력받기
+```python
+N, M = map(int, input().split())
+graph = [list(map(int, input().split())) for _ in range(N)]
+```
