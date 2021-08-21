@@ -1,3 +1,4 @@
+
 # 핵심 개념들
 
 ## 에라토스테네스의 체
@@ -22,4 +23,11 @@ board = list(map(lambda x: ord(x)-65, input().rstrip()))
 ```python
 N, M = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(N)]
+```
+
+## RecursionError
+> 최대 재귀 깊이 강제로 늘리기
+```python
+import sys
+sys.setrecursionlimit(100000)
 ```
