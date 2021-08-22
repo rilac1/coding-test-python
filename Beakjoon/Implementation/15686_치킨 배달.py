@@ -1,4 +1,5 @@
 # 치킨 배달
+## 브루트포스
 import sys
 input = sys.stdin.readline
 N, M = map(int, input().split())

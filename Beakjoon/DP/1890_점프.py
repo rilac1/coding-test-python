@@ -1,25 +1,21 @@
 # 점프
 import sys
 input = sys.stdin.readline
+N = int(input())
+graph = [list(map(int, input().split())) for _ in range(N)]
 
-N=int(input())
-table = [[] for _ in range(N)]
-for i in range(N):
-    table[i] = list(map(int, input().split()))
+dp = [[-1]*N for _ in range(N)]
+def dfs(x,y):
+    if x==N-1 and y==N-1:
+        return 1
+    if dp[x][y] ==-1:
+        dp[x][y] = 0
+        nx = x + graph[x][y]
+        ny = y + graph[x][y]
+        if 0<=nx<N:
+            dp[x][y] += dfs(nx,y)
+        if 0<=ny<N:
+            dp[x][y] += dfs(x,ny)
+    return dp[x][y]
 
-# dp = [[True]*N for _ in range(N)]
-ret = 0
-def dfs(x, y):
-    global ret
-    if x>=N or y>=N:
-        return False
-    if table[x][y] == 0:
-        return True
-
-    n = table[x][y]
-    if dfs(x+n, y) or dfs(x, y+n):
-        table[x][y] = 0
-        ret += 1
-
-dfs(0,0)
-print(ret)
+print(dfs(0,0))
