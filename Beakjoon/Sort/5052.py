@@ -5,5 +5,8 @@ t = int(input())
 
 for _ in range(t):
     n = int(input())
-    number = [list(map(int, input().split())) for _ in range(n)]
+    number = [input().rstrip().split() for _ in range(n)]
+number.sort()
+
+print(number)
     
