@@ -26,3 +26,13 @@ while jewel and bag:
         bag.pop(end)
 
 print(ret)
+
+# 4 4
+# 1 100
+# 2 200
+# 13 300
+# 10 500
+# 10
+# 10
+# 10
+# 14
