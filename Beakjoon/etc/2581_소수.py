@@ -1,5 +1,4 @@
 # 소수
-# 에라토스테네스의 체
 m = int(input())
 n = int(input())
 a = list(range(10001))
