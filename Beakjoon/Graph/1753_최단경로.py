@@ -1,4 +1,5 @@
 # 최단경로
+## 다익스트라(dijkstra)
 import sys, heapq
 input = sys.stdin.readline
 
