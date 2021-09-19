@@ -1,3 +1,4 @@
+# 트리의 부모 찾기
 import sys
 from collections import deque
 input=sys.stdin.readline
