@@ -14,7 +14,3 @@ def Z(x,y,n):
 x,y,n = 0,0,0
 for i in range(inter):
     ...
-    
-
-
-
