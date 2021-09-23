@@ -13,13 +13,12 @@ def dijkstra(a):
     return distance
 ```
 
-## UnionFind
+## Union_Find
 ```python
 def find(x):
     if x==parent[x]:
         return x
-    p = find(parent[x])
-    parent[x] = p
+    parent[x] = find(parent[x])
     return parent[x]
 
 def union(x,y):
@@ -27,5 +26,4 @@ def union(x,y):
     y = find(y)
     if x != y:
         parent[y] = x
-        number[x] += number[y]
 ```
