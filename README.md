@@ -1,6 +1,4 @@
-
 # 새로 알게 된 개념들
-
 ## 에라토스테네스의 체
 > 여러개의 소수를 판별해야 할 때에는 에라토스테네스의 체를 사용한다.  
 - 2부터 N까지의 소수를 구한다고 했을 때 2부터 N까지 반복문을 돌면서 아래 과정을 반복하되, 지워진 수는 패스한다. `for n in range(2, N+1):`
@@ -35,4 +33,35 @@ graph = [list(map(int, input().split())) for _ in range(N)]
 ```python
 import sys
 sys.setrecursionlimit(100000)
+```
+
+# My Library
+## Dijkstra
+```python
+import heapq
+def dijkstra(a):
+    h = [(0,a)]
+    distance = [1e9]*(V+1)
+    while h:
+        dis,b = heapq.heappop(h)
+        if dis<distance[b]:
+            distance[b] = dis
+            for i,d in graph[b]:
+                heapq.heappush(h, ((d+dis,i)))
+    return distance
+```
+
+## Union_Find
+```python
+def find(x):
+    if x==parent[x]:
+        return x
+    parent[x] = find(parent[x])
+    return parent[x]
+
+def union(x,y):
+    x = find(x)
+    y = find(y)
+    if x != y:
+        parent[y] = x
 ```
