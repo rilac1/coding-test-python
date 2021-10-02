@@ -1,5 +1,6 @@
 # 사이클 게임
 import sys
+sys.setrecursionlimit(100000)
 input = sys.stdin.readline
 n, m = map(int,input().split())
 action = [tuple(map(int, input().split())) for _ in range(m)]
