@@ -1,7 +1,7 @@
 # 텀 프로젝트
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(1000000)
 
 def dfs(x):
     visited[x] = True
