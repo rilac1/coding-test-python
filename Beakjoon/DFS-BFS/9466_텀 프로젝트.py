@@ -1,4 +1,8 @@
 # 텀 프로젝트
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(100000)
+
 def dfs(x):
     visited[x] = True
     ring.append(x)
