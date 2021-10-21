@@ -1,23 +1,27 @@
 # 줄 세우기
+## 위상정렬
 import sys
+from collections import deque
 input = sys.stdin.readline
 N, M = map(int, input().split())
-compare = [tuple(map(int, input().split())) for _ in range(M)]
+comp = [[] for _ in range(N+1)]
+degree = [0]*(N+1)
+for _ in range(M):
+    a,b = map(int, input().split())
+    degree[b] += 1
+    comp[b].append(a)
 
-def find(x):
-    if x == parent[x]: return x
-    parent[x] = find(parent[x])
-    return parent[x]
-def union(x,y):
-    x = find(x)
-    y = find(y)
-    if x != y: parent[y] = x
+start = 0
+for i in range(1,N+1):
+    if degree[i]==0:
+        start = i
+        break
 
-parent = list(range(N+1))
-for a,b in compare: union(a,b)
-group=[[] for _ in range(N+1)]
-for i in range(N,0,-1): group[find(i)].append(i)
-for g in group:
-    for a in g:
-        print(a,end=' ')
+q = deque([start])
+while q:
+    a = deque.popleft(q)
+    print(a, end=' ')
+    for b in comp[a]:
+        degree[b] -= 1
+        if degree[b]==0: deque.append(q, b)
 print()
