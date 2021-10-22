@@ -1,4 +1,5 @@
 # 새로 알게 된 개념들
+
 ## 에라토스테네스의 체
 > 여러개의 소수를 판별해야 할 때에는 에라토스테네스의 체를 사용한다.  
 - 2부터 N까지의 소수를 구한다고 했을 때 2부터 N까지 반복문을 돌면서 아래 과정을 반복하되, 지워진 수는 패스한다. `for n in range(2, N+1):`
@@ -107,4 +108,22 @@ for n in range(1,N+1):
     while i*n<=N:
         mask[i*n]=True
         i+=1
+```
+
+## Topology Sort
+```python
+from collections import deque
+conditions = [[]]
+degree = []
+
+result = []
+q = deque()
+for i in range(N): 
+    if degree[i]==0: deque.append(q, i)
+while q:
+    a = deque.popleft(q)
+    result.append(a)
+    for b in conditions[a]:
+        degree[b] -= 1
+        if degree[b]==0: deque.append(q, b)
 ```

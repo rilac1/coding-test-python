@@ -9,15 +9,12 @@ degree = [0]*(N+1)
 for _ in range(M):
     a,b = map(int, input().split())
     degree[b] += 1
-    comp[b].append(a)
+    comp[a].append(b)
 
-start = 0
+q = deque()
 for i in range(1,N+1):
-    if degree[i]==0:
-        start = i
-        break
+    if degree[i]==0: deque.append(q, i)
 
-q = deque([start])
 while q:
     a = deque.popleft(q)
     print(a, end=' ')
