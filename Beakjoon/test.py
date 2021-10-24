@@ -1,12 +1,10 @@
-# 구간 합 구하기
-## 세그먼트 트리
 import sys
 input = sys.stdin.readline
 N,M,K = map(int,input().split())
 arr = [0]+[int(input()) for _ in range(N)]
 cmd = [list(map(int, input().split())) for _ in range(M+K)]
-
 tree = [0]*(4*N)
+
 def init(start, end, node):
     if start==end: 
         tree[node] = arr[start]

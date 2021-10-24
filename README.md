@@ -127,3 +127,46 @@ while q:
         degree[b] -= 1
         if degree[b]==0: deque.append(q, b)
 ```
+
+## Segment Tree
+```python
+arr = []    # source array
+tree = [0]*(4*N)
+
+# initialize the tree
+def init(start, end, node):
+    if start==end: 
+        tree[node] = arr[start]
+        return tree[node]
+    mid = (start+end)//2
+    tree[node] = init(start,mid,node*2) + init(mid+1,end,node*2+1)
+    return tree[node]
+
+# sum of left~right
+def t_sum(start, end, node):
+    global left, right
+    if start>right or end<left: return 0
+    if start>=left and end<=right: return tree[node]
+    mid = (start+end)//2
+    return t_sum(start,mid,node*2) + t_sum(mid+1,end,node*2+1)
+
+# change value
+def update(start, end, node):
+    global index, diff
+    if start<=index<=end:
+        tree[node] += diff
+        if start!=end:
+            mid = (start+end)//2
+            update(start,mid,node*2)
+            update(mid+1,end,node*2+1)
+
+# main
+init(0, N-1, 1)
+
+left, right = a, b
+print(t_sum(0, N-1, 1))
+
+index, diff = i, x
+update(0, N-1, 1)
+```
+> index가 1부터 시작시 `arr=[0]+[], init(1,N,1)`
