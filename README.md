@@ -37,32 +37,34 @@ sys.setrecursionlimit(100000)
 ```python
 visited = [False] * n
 picked = []
-def perm(n, r):
+def perm():
+    global n,r
     if len(picked) == r:
         print(picked)
         return
 
     for i in range(len):
         if not visited[i]:
-            picked.append(arr[i])   # 변화
+            picked.append(arr[i])  # 변화
             visited[i] = True
-            perm(n, r)              # 재귀호출
+            perm()                 # 재귀호출
             visited[i] = False
-            picked.pop()            # 복원
+            picked.pop()           # 복원
 ```
 
 ## Combination (<sub>n</sub>C<sub>r</sub>)
 ```python
 # 조합의 경우 visited가 필요없음
 picked = []
-def comb(n, r, left):
+def comb(left):
+    global n,r
     if len(picked) == r:
         print(picked)
         return
 
     for i in range(left, n):        # left ~ n까지만 탐색
         picked.append(arr[i])       # 변화
-        comb(n, r, i)               # 재귀호출 (마지막에 넣었던 index가 left가 된다.)
+        comb(i+1)                   # 재귀호출 (마지막에 넣었던 index가 left가 된다.)
         picked.pop()                # 복원
 ```
 
