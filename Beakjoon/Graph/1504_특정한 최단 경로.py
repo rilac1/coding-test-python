@@ -15,7 +15,7 @@ def dij(a):
     h = [(0,a)]
     while h:
         c,b = heapq.heappop(h)
-        if c<=dist[b]:
+        if c==dist[b]:
             for t,d in graph[b]:
                 if c+d<dist[t]:
                     dist[t] = c+d
