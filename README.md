@@ -77,7 +77,7 @@ def dijkstra(start):
     h = [(0, start)]
     while h:
         dist, now = heapq.heappop(h)
-        if dist<=distance[now]:
+        if dist==distance[now]:
             for target,d in graph[now]:
                 if dist+d < distance[target]:
                     distance[target] = dist+d
