@@ -81,7 +81,7 @@ def dijkstra(start):
             for target,d in graph[now]:
                 if dist+d < distance[target]:
                     distance[target] = dist+d
-                    heapq.heappush(h, ((dist+d, target)))
+                    heapq.heappush(h, (dist+d, target))
     return distance
 ```
 
