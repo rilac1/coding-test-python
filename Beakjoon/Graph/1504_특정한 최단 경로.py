@@ -1,3 +1,4 @@
+# 특정한 최단 경로
 import sys, heapq
 input = sys.stdin.readline
 N,E = map(int, input().split())
@@ -10,16 +11,17 @@ v1,v2 = map(int, input().split())
 
 def dij(a):
     dist = [1e9]*(N+1)
+    dist[a]=0
     h = [(0,a)]
     while h:
         c,b = heapq.heappop(h)
-        if dist[b]<c:
-            continue
-        for t,d in graph[b]:
-            if c+d<dist[t]:
-                dist[t] = c+d
-                heapq.heappush(h,(c+d,t))
+        if c<=dist[b]:
+            for t,d in graph[b]:
+                if c+d<dist[t]:
+                    dist[t] = c+d
+                    heapq.heappush(h,(c+d,t))
     return dist
+
 d0 = dij(1)
 d1 = dij(v1)
 d2 = dij(v2)

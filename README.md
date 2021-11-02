@@ -71,16 +71,17 @@ def comb(left):
 ## Dijkstra
 ```python
 import heapq
-def dijkstra(a):
-    h = [(0,a)]
-    distance = [1e9]*(V+1)
+def dijkstra(start):
+    distance = [1e9]*(N+1)
+    distance[start] = 0
+    h = [(0, start)]
     while h:
-        dis,b = heapq.heappop(h)
-        if dis<distance[b]:
-            for i,d in graph[b]:
-                if dis+d < distance[i]:
-                    distance[i] = dis+d
-                    heapq.heappush(h, ((dis+d,i)))
+        dist, now = heapq.heappop(h)
+        if dist<=distance[now]:
+            for target,d in graph[now]:
+                if dist+d < distance[target]:
+                    distance[target] = dist+d
+                    heapq.heappush(h, ((dist+d, target)))
     return distance
 ```
 
