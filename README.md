@@ -77,9 +77,10 @@ def dijkstra(a):
     while h:
         dis,b = heapq.heappop(h)
         if dis<distance[b]:
-            distance[b] = dis
             for i,d in graph[b]:
-                heapq.heappush(h, ((d+dis,i)))
+                if dis+d < distance[i]:
+                    distance[i] = dis+d
+                    heapq.heappush(h, ((dis+d,i)))
     return distance
 ```
 

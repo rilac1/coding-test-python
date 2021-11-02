@@ -15,7 +15,7 @@ h = []
 heapq.heappush(h, (0, K))
 while h:
     cost, next = heapq.heappop(h)
-    if cost < dist[next]:
+    if cost <= dist[next]:
         dist[next] = cost
         for n, c in graph[next]:
             heapq.heappush(h, (c+cost, n))
