@@ -13,11 +13,12 @@ def dij(a):
     h = [(0,a)]
     while h:
         c,b = heapq.heappop(h)
-        if c<=dist[b]:
-            for t,d in graph[b]:
-                if c+d<dist[t]:
-                    dist[t] = c+d
-                    heapq.heappush(h,(c+d,t))
+        if dist[b]<c:
+            continue
+        for t,d in graph[b]:
+            if c+d<dist[t]:
+                dist[t] = c+d
+                heapq.heappush(h,(c+d,t))
     return dist
 d0 = dij(1)
 d1 = dij(v1)
