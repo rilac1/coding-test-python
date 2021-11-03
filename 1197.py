@@ -13,4 +13,3 @@ upper = [1e9]*(V+1)
 restart = True
 while restart:
     restart = True
-    
