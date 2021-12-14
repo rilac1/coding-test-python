@@ -25,6 +25,12 @@ N, M = map(int, input().split())
 graph = [list(map(int, list(input()))) for _ in range(N)]
 ```
 
+## List에서 Heap 객체 생성
+```python
+l = [4,3,5]
+q = heapq.heapify(l)
+```
+
 ## RecursionError
 > 최대 재귀 깊이 강제로 늘리기
 ```python
