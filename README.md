@@ -38,6 +38,10 @@ import sys
 sys.setrecursionlimit(100000)
 ```
 
+## SQL
+> 집계함수(`group by`)를 이용한 조건비교
+`where`대신 `having` 사용
+
 # My Library
 ## Permutation (<sub>n</sub>P<sub>r</sub>)
 ```python
