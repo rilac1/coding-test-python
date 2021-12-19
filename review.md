@@ -31,3 +31,8 @@ https://www.acmicpc.net/problem/2468
 - 예외처리: sys.setrecursionlimit(100000)
 - 새로 알게 된 점: 2차원 배열의 최댓값 (`m = max(map(max, graph))`)
 ---
+
+## 이분탐색
+#### 나무 자르기
+https://www.acmicpc.net/problem/2805
+- 
