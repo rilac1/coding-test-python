@@ -184,3 +184,30 @@ index, diff = i, x
 update(0, N-1, 1)
 ```
 > index가 1부터 시작시 `arr=[0]+[], init(1,N,1)`
+
+## Binary Search
+```python
+def bin_search(left, right):
+    global target
+    while l<=r:
+        mid = (left+right)//2
+        if target<arr[mid]:
+            right = mid-1
+        elif target>arr[mid]:
+            left = mid+1
+        else: return mid
+    return -1
+```
+
+## Upper Bound
+```python
+def upper_bound(left, right):
+    global target
+    while l<=r:
+        mid = (left+right)//2
+        if target<arr[mid]:
+            right = mid-1
+        elif target>=arr[mid]:
+            left = mid+1
+    return right
+```

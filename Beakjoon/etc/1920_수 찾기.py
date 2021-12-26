@@ -8,7 +8,7 @@ def bisect(l,r):
     global t
     while l<r:
         m = (l+r)//2
-        if t<a[m]: r = m
+        if t<a[m]: r = m-1
         elif t>a[m]: l = m+1
         else: return 1
     return 0
