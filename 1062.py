@@ -15,6 +15,8 @@ l = list(bm.keys())
 if len(l)<K-5: 
     print(N)
     exit(0)
+elif k == 26:
+    p
 for i in s: bm[i]=1
 
 def find():
