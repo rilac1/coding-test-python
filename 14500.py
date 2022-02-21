@@ -4,7 +4,7 @@ N,M = map(int,input().split())
 graph = [list(map(int,input().split())) for _ in range(N)]
 
 visited = [[False]*M for _ in range(N)]
-dx,dy = [1,0,-1,0], [0,1,0,-1]
+dx,dy = [1,0], [0,1]
 ans = 0
 
 def print_check():
@@ -14,18 +14,14 @@ def print_check():
         print()
     print()
 
-def hiddenBlock(x,y,val):
-    temp = []
-    for i in range(4):
+def hiddenBlock(x,y):
+    temp = 0
+    for i in range(2):
         nx, ny = x+dx[i], y+dy[i]
-        if 0<=nx<N and 0<=ny<M:
-            if not visited[nx][ny]:
-                temp.append(graph[nx][ny])
-    if len(temp)==3: 
-        return max(temp[0]+temp[1], temp[1]+temp[2], temp[0]+temp[2])
-    elif len(temp)==2:
-        return sum(temp)
-    else: return 0
+        if 0<=nx<N and 0<=ny<M and not visited[nx][ny]:
+            temp += graph[nx][ny]
+        else: return 0
+    return temp
 
 def dfs(x, y, val, cnt):
     global ans
@@ -35,21 +31,19 @@ def dfs(x, y, val, cnt):
     cnt += 1
 
     if cnt==4: 
-        print_check()
+        #print_check()
         ans = max(ans, val)
-        return
-
-    if cnt==2: 
-        ans = max(ans, hiddenBlock(x,y,val))
-
-    for i in range(2):
-        nx, ny = x+dx[i], y+dy[i]
-        if 0<=nx<N and 0<=ny<M:
-            if not visited[nx][ny]:
-                dfs(nx,ny,val,cnt)
+    else:
+        if cnt==2: 
+            print_check()
+            ans = max(ans, hiddenBlock(x,y)+val)
+        for i in range(2):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0<=nx<N and 0<=ny<M:
+                if not visited[nx][ny]:
+                    dfs(nx,ny,val,cnt)
 
     visited[x][y] = False
-    return
 
 for i in range(N):
     for j in range(M):
