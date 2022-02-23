@@ -14,14 +14,22 @@ def print_check():
         print()
     print()
 
-def hiddenBlock(x,y):
+def hiddenBlock(x,y,val):
     temp = 0
+    a = []
     for i in range(2):
         nx, ny = x+dx[i], y+dy[i]
         if 0<=nx<N and 0<=ny<M and not visited[nx][ny]:
             temp += graph[nx][ny]
         else: return 0
-    return temp
+    if len(a)==2:
+        visited[a[0][0]][a[0][1]] = True
+        visited[a[1][0]][a[1][1]] = True
+        print_check()
+        visited[a[0][0]][a[0][1]] = False
+        visited[a[1][0]][a[1][1]] = False
+        return sum(temp)
+    else: return 0
 
 def dfs(x, y, val, cnt):
     global ans
@@ -31,12 +39,11 @@ def dfs(x, y, val, cnt):
     cnt += 1
 
     if cnt==4: 
-        #print_check()
+        print_check()
         ans = max(ans, val)
     else:
         if cnt==2: 
-            print_check()
-            ans = max(ans, hiddenBlock(x,y)+val)
+            ans = max(ans, hiddenBlock(x,y,val))
         for i in range(2):
             nx, ny = x+dx[i], y+dy[i]
             if 0<=nx<N and 0<=ny<M:
