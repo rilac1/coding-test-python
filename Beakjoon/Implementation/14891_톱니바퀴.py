@@ -1,3 +1,4 @@
+# 톱니바퀴
 from collections import deque
 gear = [deque(map(int,input())) for _ in range(4)]
 K = int(input())
@@ -7,8 +8,8 @@ def rotate():
     for i in range(4):
         if direction[i]==1:
             gear[i].appendleft(gear[i].pop())
-        elif direction==-1:
-            gear[i].append(gear[i].popleft)
+        elif direction[i]==-1:
+            gear[i].append(gear[i].popleft())
 
 def check(i, n):
     next = i+n
@@ -27,7 +28,6 @@ for i, dir in order:
     check(i, -1)
     check(i, 1)
     rotate()
-    for t in gear: print(*t)
 
 ans = 0
 for i in range(4):
