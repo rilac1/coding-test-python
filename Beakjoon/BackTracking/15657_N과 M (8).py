@@ -1,6 +1,5 @@
 from select import select
 
-
 N,M = map(int,input().split())
 arr = sorted(list(map(int,input().split())))
 
