@@ -1,3 +1,4 @@
+# 벽 부수고 이동하기 2
 import sys
 from collections import deque
 input = sys.stdin.readline
@@ -21,12 +22,10 @@ while q:
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
-        if 0<=nx<N and 0<=ny<M and visited[nx][ny]<wall:
-            if graph[nx][ny]:
-                if wall:
-                    visited[nx][ny] = wall-1
-                    q.append((nx,ny,wall-1, cnt+1))
-            else: 
-                visited[nx][ny] = wall
-                q.append((nx,ny, wall, cnt+1))
+        w = wall
+        if 0<=nx<N and 0<=ny<M:
+            if graph[nx][ny]: w -= 1
+            if visited[nx][ny] < w: 
+                visited[nx][ny] = w
+                q.append((nx,ny, w, cnt+1))
 print(-1)
