@@ -1,26 +1,22 @@
-s = '*'
-b = ' '
-def star(N,i,j):
-    print(s*N, end='')
-    print()
-    print(s*(N//3), end='')
-    print(b*(N//3), end='')
-    print(s*(N//3), end='')
-    print()
-    print(s*N, end='')
-    print()
+N = int(input())
+
+def dfs(n,col,row):
+    if n==1:
+        print('*',end='')
+        if row==N-1: print()
+        return
+
+    n //= 3
+    dfs(n,col,row)
+    dfs(n,col,row+n)
+    dfs(n,col,row+n+n)
     
-star(int(input()),0,0)
+    dfs(n,col+n,row)
+    dfs(n,col+n,row+n+n)
+
+    dfs(n,col+n+n,row)
+    dfs(n,col+n+n,row+n)
+    dfs(n,col+n+n,row+n+n)
 
 
-"""
-*********
-* *   * *
-******* *
-***   ***
-* *   * *
-***   ***
-*********
-* ** ** *
-*********
-"""
+dfs(N,0,0)
