@@ -41,44 +41,45 @@ def move(board,x,y,i):
         else: return cnt
 
 def dfs(n,left):
-    global ans, cctvNUM, spot
-    if n==cctvNUM:
+    global ans, blindSpot
+
+    if n==len(cctvList):
         copiedGraph = deepcopy(graph)
-        cnt = spot
-        for m in moveQ:
+        cnt = blindSpot
+        for m in moveStack:
             for x,y,d in m:
                 cnt -= move(copiedGraph,x,y,d)
-            ans = min(ans,cnt)
+        ans = min(ans,cnt)
         return
 
-    for i in range(left,cctvNUM):
+    for i in range(left, len(cctvList)):
         cctv = cctvList[i]
         for d in range(cctv.size()):
-            moveQ.append(cctv.add(d))
+            moveStack.append(cctv.add(d))
             dfs(n+1,i+1)
-            moveQ.pop()
+            moveStack.pop()
 
+blindSpot = 0
 cctvList = []
-spot = 0
-temp = []
+cctvFives = []
 for i in range(N):
     for j in range(M):
         t = graph[i][j]
         if t==0:
-            spot += 1
+            blindSpot += 1
         elif t==5:
-            temp.append((i,j))
+            cctvFives.append((i,j))
         elif t!=6:
             cctvList.append(CCTV(i,j,t))
 
-cctvNUM = len(cctvList)
-
-for x,y in temp:
+# 5번 CCTV는 방향이 하나.
+# 고로 탐색하지 않게 미리 그래프에 반영.
+for x,y in cctvFives:
     for i in range(4):
-        spot -= move(graph,x,y,i)
+        blindSpot -= move(graph,x,y,i)
 
-moveQ = []
-ans = spot
+moveStack = []
+ans = blindSpot
 dfs(0,0)
 
 print(ans)
