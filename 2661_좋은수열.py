@@ -2,25 +2,26 @@ N = int(input())
 
 def isValid(select):
     n = len(select)
-    for length in range(n//2+1):
+    # 여기만 수정하면 됨.
+    for length in range(1,n//2+1):
         for l in range(n-length-1):
             if select[l:l+length]==select[l+length:l+length<<1]:
                 return False
     return True
 
-select = []
-def back(n):
+select = [1]
+def back():
     global ans, N
     if not isValid(select): return
 
     if len(select)==N:
-        for s in select: print(s,end='')
+        for s in select: print(s, end='')
         print()
         exit(0)
 
     for i in range(1,4):
-        if i!=n:
+        if i!=select[-1]:
             select.append(i)
-            back(i)
+            back()
             select.pop()
-back(0)
+back()
