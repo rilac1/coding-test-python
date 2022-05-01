@@ -2,7 +2,6 @@ N = int(input())
 
 def isValid(select):
     n = len(select)
-    # 여기만 수정하면 됨.
     for length in range(1,n//2+1):
         for l in range(n-length-1):
             if select[l:l+length]==select[l+length:l+length<<1]:
