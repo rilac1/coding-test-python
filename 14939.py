@@ -35,3 +35,4 @@ for mask in range(10):
 
 if ans<1e9: print(ans)
 else: print(-1)
+
