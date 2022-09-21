@@ -2,3 +2,5 @@
 spare/
 temp.py
 .DS_Store
+/.idea/*
+Coding-test.iml
