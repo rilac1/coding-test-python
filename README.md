@@ -2,8 +2,20 @@
 
 ## 에라토스테네스의 체
 > 여러개의 소수를 판별해야 할 때에는 에라토스테네스의 체를 사용한다.  
-- 2부터 N까지의 소수를 구한다고 했을 때 2부터 N까지 반복문을 돌면서 아래 과정을 반복하되, 지워진 수는 패스한다. `for n in range(2, N+1):`
+- 2부터 N까지의 소수를 구한다고 했을 때 2부터 N까지 반복문을 돌면서 아래 과정을 반복하되, 지워진 수는 패스한다.
 - 지워지지 않은 수가 소수다.
+```python
+def get_prime(N):
+    prime = [True] * (N + 1)
+
+    for i in range(2, int(N ** .5) + 1):
+        if not prime[i]:
+            continue
+        for j in range(i + i, N + 1, i):
+            prime[j] = False
+    
+    return [i for i in range(2, N + 1) if prime[i]]
+```
 
 ## 백트래킹
 > 모든 경우의 수를 탐색해야 할 때에는 재귀호출을 사용한다. (dfs)
