@@ -5,8 +5,16 @@
 - 2부터 N까지의 소수를 구한다고 했을 때 2부터 N까지 반복문을 돌면서 아래 과정을 반복하되, 지워진 수는 패스한다.
 - 지워지지 않은 수가 소수다.
 
+## 최빈값 구하기
+```python
+import statistics
+arr = list()
+mode = statistics.mode(arr)
+```
+
 ## 백트래킹
 > 모든 경우의 수를 탐색해야 할 때에는 재귀호출을 사용한다. (dfs)
+
 ## 깊은복사
 ```python
 import copy
