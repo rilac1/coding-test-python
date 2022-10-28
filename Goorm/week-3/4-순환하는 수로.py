@@ -1,34 +1,24 @@
 import sys
-from copy import deepcopy
+sys.setrecursionlimit(100000)
 input = sys.stdin.readline
-
-def dfs(node, parent, answer):
-    for next in graph[node]:
-        if not visited[next]:
-            visited[next] = True
-            answer.append(next)
-            return dfs(next, node, deepcopy(answer))
-
-        elif next != parent:
-            return answer
-    return []
-
 N = int(input())
-graph = [[] for _ in range(N+1)]
+graph = [set() for _ in range(N+1)]
 
 for _ in range(N):
     a,b = map(int, input().split())
-    graph[a].append(b)
-    graph[b].append(a)
+    graph[a].add(b)
+    graph[b].add(a)
 
-max_length = 0
-for node in range(1, N):
-    visited = [False] * (N+1)
-    result = dfs(node, -1, [0])
-    if max_length < len(result):
-        answer = result
-        max_length = len(answer)
+def delete_leaf_node(node):
+    path_set = graph[node]
+    if len(path_set) == 1:
+        target = path_set.pop()
+        graph[target].remove(node)
+        delete_leaf_node(target)
 
-answer.sort()
+for node in range(1, N+1):
+    delete_leaf_node(node)
+
+answer = [node for node in range(1, N+1) if len(graph[node]) == 2]
 print(len(answer))
-print(answer)
+print(*answer)
